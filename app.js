@@ -1,23 +1,24 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+/*
+Express.js
 
-app.use(express.static('./public'))
+API-
+JSON
+send data
+res.json()
 
-// app.get('/',(req,res)=>{
-//     res.sendFile(path.resolve(__dirname,'./navbar-app/index.html'))
-// })
-
-//adding to static assests 
-//SSR
-/*Now we have removed the app.get for root url and added index.html to public folder.
-so by default the app will always serve the index.html as root file
+SSR-
+template
+send template
+res.render()
 */
 
-app.all('*',(req,res)=>{
-    res.status(404).send('resource not found');
+const express = require('express');
+const app = express();
+
+app.get('/',(req,res)=>{
+    res.json([{name: 'john'},{name: 'susan'}]);
 })
 
 app.listen(5000,()=>{
-    console.log(`server is listening on port ${5000}`);
-});
+    console.log("server is listening on port 5000...");
+})
