@@ -3,7 +3,8 @@ const app = express()
 const logger = require("./logger")
 //req => middleware => res
 
-app.use(logger)
+app.use('/api',logger)
+//applies to anything to path provided after /api
 
 app.get('/',(req,res)=>{
     res.send('Home');
