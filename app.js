@@ -15,8 +15,19 @@ app.get('/api/products',(req,res)=>{
     res.json(newProducts);
 })
 
-app.get('/api/products/1',(req,res)=>{
-    const singleProduct = products.find((product)=> product.id===1)
+app.get('/api/products/:productID',(req,res)=>{
+    // console.log(req);
+    // console.log(req.params);
+    // route params are placeholders where user provides data and using req.params we can access that data and setup some kind of logic
+
+    const {productID} = req.params;
+    const singleProduct = products.find(
+        (product)=> product.id===Number(productID)
+    )
+    if(!singleProduct){
+        return res.status(404).send('Product Does not Exist')
+    }
+    console.log(singleProduct);
     res.json(singleProduct);
 })
 
